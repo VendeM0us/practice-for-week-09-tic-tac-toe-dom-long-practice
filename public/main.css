@@ -8,10 +8,13 @@ h1 {
   margin-bottom: 30px;
 }
 
-.hidden {
-  visibility: hidden;
+#display-win-or-tie {
   text-align: center;
   margin-bottom: 30px;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 #main-board {
@@ -44,11 +47,18 @@ button:hover {
   font-size: 30px;
 }
 
+.icon {
+  width: 75px;
+}
+
 /* tiles */
 .tile {
   border: 2px solid black;
   width: 100px;
   height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #tile-1, #tile-2, #tile-3 {
