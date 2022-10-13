@@ -1,1 +1,85 @@
 /* Your code here */
+html {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.hidden {
+  visibility: hidden;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#main-board {
+  width: fit-content;
+  margin: auto;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+#options {
+  margin: 75px auto 0;
+  height: 40px;
+  max-width: 25%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  transition: font-size 0.3s;
+  white-space: nowrap;
+}
+
+button:hover {
+  font-size: 30px;
+}
+
+/* tiles */
+.tile {
+  border: 2px solid black;
+  width: 100px;
+  height: 100px;
+}
+
+#tile-1, #tile-2, #tile-3 {
+  border-top-color: white;
+}
+
+#tile-1, #tile-4, #tile-7 {
+  border-left-color: white;
+}
+
+#tile-3, #tile-6, #tile-9 {
+  border-right-color: white;
+}
+
+#tile-7, #tile-8, #tile-9 {
+  border-bottom-color: white;
+}
+
+@media (max-width: 950px) {
+  #options {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 500px) {
+  #options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button {
+    margin-bottom: 10px;
+  }
+}
