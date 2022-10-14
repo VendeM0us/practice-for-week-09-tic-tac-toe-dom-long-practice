@@ -1,0 +1,20 @@
+{
+  "name": "practice-for-week-09-tic-tac-toe-dom-long-practice",
+  "version": "1.0.0",
+  "description": "tic-tac-toe practice using html, css, js, and save functionality through cookies",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VendeM0us/practice-for-week-09-tic-tac-toe-dom-long-practice.git"
+  },
+  "author": "Mayolito C. Waje",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VendeM0us/practice-for-week-09-tic-tac-toe-dom-long-practice/issues"
+  },
+  "homepage": "https://github.com/VendeM0us/practice-for-week-09-tic-tac-toe-dom-long-practice#readme"
+}
