@@ -1,4 +1,5 @@
 import ticTacToe from "./tic-tac-toe.js";
+import * as cookie from "./handle-cookies.js";
 
 const board = new ticTacToe(); // INITIALIZE BOARD
 let givenUp = false;
@@ -23,6 +24,13 @@ function populateTiles() {
       mainBoard.appendChild(tileDiv);
     });
   });
+}
+
+function displayCurrentTurn() {
+  const currentTurn = board.turn === "x" ? "X" : "O";
+
+  const display = document.getElementById("current-turn");
+  display.innerText = `Current Turn: ${currentTurn}`;
 }
 
 function enableNewGame() {
@@ -58,9 +66,11 @@ function setWinOrTie() {
       ? "Player X"
       : "Player O";
 
+    banner.dataset.winner = winner;
     banner.innerText = `${winner} win!`;
     unhide = true;
   } else if (board.isTie()) {
+    banner.dataset.winner = "tie";
     banner.innerText = "It's a tie!"
     unhide = true;
   }
@@ -84,6 +94,8 @@ function resetTiles() {
 
 window.addEventListener("DOMContentLoaded", event => {
   populateTiles();
+  cookie.restoreGameState(board);
+  displayCurrentTurn();
 
   document.getElementById("main-board").addEventListener("click", event => {
     const coordinate = event.target.dataset.coordinate;
@@ -104,18 +116,25 @@ window.addEventListener("DOMContentLoaded", event => {
       setWinOrTie();
 
       board.changeTurn(); // will only trigger if there's no win or tie yet
+      displayCurrentTurn();
+      cookie.updateGameState(board);
     }
   });
 
   document.getElementById("new-game").addEventListener("click", event => {
     if (event.currentTarget.classList.contains("disabled")) return;
     
+    const banner = document.getElementById("display-win-or-tie");
+    banner.classList.add("hidden");
+    banner.dataset.winner = "none";
+
     board.reset();
-    document.getElementById("display-win-or-tie").classList.add("hidden");
     resetTiles();
+    displayCurrentTurn();
     disableNewGame();
     enableGiveUp();
     givenUp = false;
+    cookie.reset();
   });
 
   document.getElementById("give-up").addEventListener("click", event => {
@@ -126,10 +145,12 @@ window.addEventListener("DOMContentLoaded", event => {
       : "Player X";
 
     const banner = document.getElementById("display-win-or-tie");
+    banner.dataset.winner = winner;
     banner.innerText = `${winner} win!`;
     banner.classList.remove("hidden");
 
     givenUp = true;
     enableNewGame();
+    cookie.updateGameState(board);
   });
 });

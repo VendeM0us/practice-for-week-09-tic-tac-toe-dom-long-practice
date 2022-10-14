@@ -12,9 +12,10 @@
   <!-- HTML structure for the UI: -->
   <!-- Your code here -->
   <h1>Tic-Tac-Toe Game</h1>
-  <h2 id="display-win-or-tie" class="hidden">#{setWinner}</h2>
+  <h2 id="display-win-or-tie" class="hidden" data-winner="none">#{setWinner}</h2>
   <div id="main-board">
   </div>
+  <h3 id="current-turn">Current Player: X</h3>
   <div id="options">
     <button id="new-game" class="disabled">New Game</button>
     <button id="give-up" class="enabled">Give Up</button>
