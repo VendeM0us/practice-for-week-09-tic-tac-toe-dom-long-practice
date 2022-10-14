@@ -118,4 +118,14 @@ export default class ticTacToe {
       this.board[row][col] = this.turn;
     }
   }
+
+  reset() {
+    this.board = 
+    [
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""]
+    ]
+  this.turn = "x";
+  }
 }
